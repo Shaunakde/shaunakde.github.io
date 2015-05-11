@@ -2,111 +2,51 @@
 <head>
     <title>Clrfeed-ex01</title>
     <meta charset="utf-8">
-    <script src="http://cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
-</head>
-<body>
+    <script src="https://cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <script>
+    var game = new Phaser.Game(500, 50, Phaser.AUTO, 'game');
 
-    <div id="game"></div>
+    var play = function(game){}  ; // Constructor
 
-<script id="jsbin-javascript">
-var game = new Phaser.Game(500, 50, Phaser.AUTO, 'game');
+    play.prototype = {
+    		preload:function(){
+    			this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue001/';
+                this.load.crossOrigin = 'anonymous';
+                this.load.image('bg', 'assets/background.png');
+                this.load.image('tank', 'assets/tank.png');
 
-var play = function(game){}  ; // Constructor
+                //  Note: Graphics from Amiga Tanx Copyright 1991 Gary Roberts
 
-play.prototype = {
-		preload:function(){
-			this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue001/';
-            this.load.crossOrigin = 'anonymous';
-            this.load.image('bg', 'assets/background.png');
-            this.load.image('tank', 'assets/tank.png');
+              game.world.setBounds(0,0,1000,1000);
+    		},
 
+    		create:function(){
+              this.game.add.sprite(0,0,'bg');
+    			tank = this.game.add.sprite(0,0,'tank');
+                this.game.camera.follow(tank);
 
-
-
-            //  Note: Graphics from Amiga Tanx Copyright 1991 Gary Roberts
-
-          game.world.setBounds(0,0,1000,1000);
-		},
-
-		create:function(){
-          this.game.add.sprite(0,0,'bg');
-			tank = this.game.add.sprite(0,0,'tank');
-            this.game.camera.follow(tank);
-
-		},
+    		},
 
 
-		update:function(){
-		  if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
-              {
-                tank.x += 10;
-              }
-           if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
-              {
-                tank.x -= 10;
-              }
-			}
-		};
+    		update:function(){
+    		  if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+                  {
+                    tank.x += 10;
+                  }
+               if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+                  {
+                    tank.x -= 10;
+                  }
+    			}
+    		};
 
-game.state.add("L0",play);
-game.state.start("L0");
-</script>
-
-<script id="jsbin-source-html" type="text/html"><html>
-<head>
-    <title>Clrfeed-ex01</title>
-    <meta charset="utf-8">
-    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"><\/script>
+    game.state.add("L0",play);
+    game.state.start("L0");
+    </script>
 </head>
 <body>
 
     <div id="game"></div>
 
 </body>
-</html></script>
-
-
-<script id="jsbin-source-javascript" type="text/javascript">var game = new Phaser.Game(500, 150, Phaser.AUTO, 'game');
-
-var play = function(game){}  ; // Constructor
-
-play.prototype = {
-		preload:function(){
-			this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue001/';
-            this.load.crossOrigin = 'anonymous';
-            this.load.image('bg', 'assets/background.png');
-            this.load.image('tank', 'assets/tank.png');
-
-
-
-
-            //  Note: Graphics from Amiga Tanx Copyright 1991 Gary Roberts
-
-          game.world.setBounds(0,0,1000,1000);
-		},
-
-		create:function(){
-          this.game.add.sprite(0,0,'bg');
-			tank = this.game.add.sprite(0,0,'tank');
-            this.game.camera.follow(tank);
-
-		},
-
-
-		update:function(){
-		  if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
-              {
-                tank.x += 10;
-              }
-           if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
-              {
-                tank.x -= 10;
-              }
-			}
-		};
-
-game.state.add("L0",play);
-game.state.start("L0");
-
-</script></body>
 </html>
